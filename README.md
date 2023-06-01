@@ -99,3 +99,16 @@ server.listen(3000);
 **PATCH Requests** - PATCH requests are used to update a resource.
 
 **OPTIONS Requests** - OPTIONS requests are used to fetch information about a server.
+
+
+> In the example below:
+
+```js
+    response.write(
+      "<body><form action='/message' method='POST'><input type='text' name='message'></input><button type='submit></button></form></body>"
+    );
+```
+
+- The `name` set on the input does not have to be `message` , it will add any input data to the request and make it accessible via the assigned name.
+
+- the form action is set to `/message` which means that when the form is submitted, the data will be sent to the `/message` route.

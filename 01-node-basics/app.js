@@ -8,7 +8,7 @@ const server = http.createServer((request, response) => {
     response.write("<html>");
     response.write("<head><title>My First Page</title></head>");
     response.write(
-      "<body><form action='/message' method='POST'><input type='text'></input><button type='submit></button></form></body>"
+      "<body><form action='/message' method='POST'><input type='text' name='message'></input><button type='submit></button></form></body>"
     );
     response.write("</html>");
     response.end();
