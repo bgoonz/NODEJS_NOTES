@@ -46,7 +46,6 @@ server.listen(3000);
 
 `response.write( "<h2> Hello </h2>" );` - write data to the response, this is the data that will be sent back to the client.
 
-
 `response.end();` - end the response, this will send the response back to the client.
 
 **Complete Code To Send Basic HTML to Client**
@@ -55,25 +54,48 @@ server.listen(3000);
 const http = require("http");
 
 const server = http.createServer((request, response) => {
-    console.log( request.url, request.method, request.headers );
-    response.setHeader( "Content-Type", "text/html" );
-    response.write( '<html>' );
-    response.write( '<head><title>My First Page</title></head>' );
-    response.write( '<body><h1>Hello from my Node.js Server!</h1></body>' );
-    response.write( '</html>' );
-    response.end();
+  console.log(request.url, request.method, request.headers);
+  response.setHeader("Content-Type", "text/html");
+  response.write("<html>");
+  response.write("<head><title>My First Page</title></head>");
+  response.write("<body><h1>Hello from my Node.js Server!</h1></body>");
+  response.write("</html>");
+  response.end();
 });
 
 server.listen(3000);
 ```
 
-
 > Shortcut to open developer tools in Chrome: `Ctrl + Shift + I`
 
 > How to view the request in the network tab of the developer tools in Chrome:
-![developer tools network tab](./0-images/2023-06-01-12-24-14.png)
-
+> ![developer tools network tab](./0-images/2023-06-01-12-24-14.png)
 
 - as you can see there are some default headers set by the browser in addition to the headers we set in our code.
 
+- If we view the response we see the response body is
 
+```html
+<html>
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <h1>Hello from my Node.js Server!</h1>
+  </body>
+</html>
+```
+
+[Available Headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
+
+**GET Requests** - GET requests are the most common type of request, and they are used to fetch data from a server.
+
+**POST Requests** - POST requests are used to send data to a server.
+
+**PUT Requests** - PUT requests are used to send data to a server to create or update a resource.
+
+**DELETE Requests** - DELETE requests are used to delete a resource from a server.
+
+**PATCH Requests** - PATCH requests are used to update a resource.
+
+**OPTIONS Requests** - OPTIONS requests are used to fetch information about a server.
