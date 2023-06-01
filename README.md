@@ -66,3 +66,14 @@ const server = http.createServer((request, response) => {
 
 server.listen(3000);
 ```
+
+
+> Shortcut to open developer tools in Chrome: `Ctrl + Shift + I`
+
+> How to view the request in the network tab of the developer tools in Chrome:
+![developer tools network tab](./0-images/2023-06-01-12-24-14.png)
+
+
+- as you can see there are some default headers set by the browser in addition to the headers we set in our code.
+
+
