@@ -100,13 +100,12 @@ server.listen(3000);
 
 **OPTIONS Requests** - OPTIONS requests are used to fetch information about a server.
 
-
 > In the example below:
 
 ```js
-    response.write(
-      "<body><form action='/message' method='POST'><input type='text' name='message'></input><button type='submit></button></form></body>"
-    );
+response.write(
+  "<body><form action='/message' method='POST'><input type='text' name='message'></input><button type='submit></button></form></body>"
+);
 ```
 
 - The `name` set on the input does not have to be `message` , it will add any input data to the request and make it accessible via the assigned name.
