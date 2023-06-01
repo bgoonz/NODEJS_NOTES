@@ -111,3 +111,12 @@ response.write(
 - The `name` set on the input does not have to be `message` , it will add any input data to the request and make it accessible via the assigned name.
 
 - the form action is set to `/message` which means that when the form is submitted, the data will be sent to the `/message` route.
+
+
+##### Streams & Buffers
+
+- Streams are a way to read data from a source or write data to a destination in a continuous fashion, they break the data up into chuncks so we can start operating on some of the data while the rest is still streaming in.
+- Buffers are a way to temporarily store data in a stream.
+- Streams are used to read or write data in chunks, and they are used to handle large amounts of data in a memory-efficient way.
+
+
