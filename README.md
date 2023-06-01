@@ -45,3 +45,24 @@ server.listen(3000);
 `response.setHeader( "Content-Type", "text/html" );` - set the header of the response, this represents the type of data that is being sent back to the client.
 
 `response.write( "<h2> Hello </h2>" );` - write data to the response, this is the data that will be sent back to the client.
+
+
+`response.end();` - end the response, this will send the response back to the client.
+
+**Complete Code To Send Basic HTML to Client**
+
+```js
+const http = require("http");
+
+const server = http.createServer((request, response) => {
+    console.log( request.url, request.method, request.headers );
+    response.setHeader( "Content-Type", "text/html" );
+    response.write( '<html>' );
+    response.write( '<head><title>My First Page</title></head>' );
+    response.write( '<body><h1>Hello from my Node.js Server!</h1></body>' );
+    response.write( '</html>' );
+    response.end();
+});
+
+server.listen(3000);
+```
