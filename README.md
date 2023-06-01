@@ -41,3 +41,7 @@ server.listen(3000);
 - The function we pass to createServer is an event listener, and the server object will emit events when a request is made, but it will not execute the event listener function right away. Instead, it will wait for the event loop to be free, and then it will execute the event listener function.
 
 `process.exit();` - exit the event loop... this is not recommended, but it is possible, and will terminate the program.
+
+`response.setHeader( "Content-Type", "text/html" );` - set the header of the response, this represents the type of data that is being sent back to the client.
+
+`response.write( "<h2> Hello </h2>" );` - write data to the response, this is the data that will be sent back to the client.
