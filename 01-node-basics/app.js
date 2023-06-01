@@ -1,10 +1,5 @@
-const http = require( 'http' );
+const http = require("http");
 
-function rqListener( req, res ) {
-    
-}
+function rqListener(req, res) {}
 // the createServer method will execute the rqListener function for every request
-http.createServer( rqListener );
-
-
-
+http.createServer(rqListener);
