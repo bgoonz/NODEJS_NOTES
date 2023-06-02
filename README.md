@@ -116,21 +116,19 @@ const parsedBody = Buffer.concat(body).toString();
 
 - the `Buffer` object is available globally in Node.js, and it is used to construct a buffer from an array of chuncks.
 
-
 In the code below:
 
 ```js
-  req.on("end", () => {
-      const parsedBody = Buffer.concat(body).toString();
-      console.log(parsedBody);
-      //parsedBody: message=Hello+all
-        const message = parsedBody.split( "=" )[ 1 ].replace( /\+/g, " " );
-        //here the write file sync exicutes after the code that comes after it.
-      fs.writeFileSync("message.txt", message);
-    });
+req.on("end", () => {
+  const parsedBody = Buffer.concat(body).toString();
+  console.log(parsedBody);
+  //parsedBody: message=Hello+all
+  const message = parsedBody.split("=")[1].replace(/\+/g, " ");
+  //here the write file sync exicutes after the code that comes after it.
+  fs.writeFileSync("message.txt", message);
+});
 ```
 
 - the annonymous function passed to the `req.on()` method is an event listener, and it will be executed when the `end` event is emitted.
 
-
-    
+- When the code reaches req.on it registers the event listeners but doesn't exicute the code in them until the event is emitted.
