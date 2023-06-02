@@ -13,18 +13,19 @@ const server = http.createServer((req, res) => {
     res.write("</html>");
     return res.end();
   }
-    if ( url === "/message" && method === "POST" ) {
-        const body = [];
-        req.on( "data", ( chunk ) => { 
-            console.log( chunk );
-            body.push(chunk)
-        } );
-        req.on( "end", () => {
-          const parsedBody = Buffer.concat(body).toString();
-          console.log(parsedBody);
-          //message=Hello+all
-          const message = parsedBody.split("=")[1];
-        });
+  if (url === "/message" && method === "POST") {
+    const body = [];
+    req.on("data", (chunk) => {
+      console.log(chunk);
+      body.push(chunk);
+    });
+    req.on("end", () => {
+      const parsedBody = Buffer.concat(body).toString();
+      console.log(parsedBody);
+      //parsedBody: message=Hello+all
+      const message = parsedBody.split("=")[1].replace(/\+/g, " ");
+      fs.writeFileSync("message.txt", message);
+    });
     fs.writeFileSync("message.txt", "DUMMY");
     res.statusCode = 302;
     res.setHeader("Location", "/");
