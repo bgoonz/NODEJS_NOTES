@@ -1,0 +1,19 @@
+{
+  "name": "01-node-basics",
+  "version": "1.0.0",
+  "description": "Node server without express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "Node",
+    "JavaScript"
+  ],
+  "author": "Bryan Guner",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
