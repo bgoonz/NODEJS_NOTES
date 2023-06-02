@@ -132,3 +132,40 @@ req.on("end", () => {
 - the annonymous function passed to the `req.on()` method is an event listener, and it will be executed when the `end` event is emitted.
 
 - When the code reaches req.on it registers the event listeners but doesn't exicute the code in them until the event is emitted.
+
+
+**Blocking & Non-Blocking Code**
+
+
+**fs.writeFile vs fs.writeFileSync:** 
+
+-
+`fs.writeFile` is an asynchronous function that allows you to write data to a file. It takes the file path, data to be written, an optional encoding (default is UTF-8), and a callback function that will be invoked once the operation is completed. Here's an example:
+
+```js
+const fs = require('fs');
+
+fs.writeFile('file.txt', 'Hello, world!', 'utf8', (err) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  console.log('Data written to file.txt');
+});
+```
+
+
+`fs.writeFileSync`, on the other hand, is a synchronous function that writes data to a file. It takes the file path, data to be written, and an optional encoding. Unlike fs.writeFile, it doesn't require a callback function and returns undefined. Here's an example:
+
+```js
+const fs = require('fs');
+
+try {
+  fs.writeFileSync('file.txt', 'Hello, world!', 'utf8');
+  console.log('Data written to file.txt');
+} catch (err) {
+  console.error(err);
+}
+```
+
+The choice between `fs.writeFile` and `fs.writeFileSync` depends on the requirements of your application. If you need to perform other tasks or handle other events while the file is being written, then `fs.writeFile` is recommended because it is non-blocking and allows your code to continue executing. On the other hand, if writing the file is a critical operation and you want to ensure it completes before moving on, `fs.writeFileSync` can be used, but be aware that it will block the execution of further code until the file write is finished.
