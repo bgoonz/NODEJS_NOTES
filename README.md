@@ -136,6 +136,10 @@ req.on("end", () => {
 
 **Blocking & Non-Blocking Code**
 
+- **Blocking code**, also known as synchronous code, executes one operation at a time and blocks further execution until the current operation is completed. When a blocking operation is encountered, the code pauses until the operation finishes, and during this time, the entire program is essentially "blocked" from executing other tasks.
+
+
+- **Non-blocking code**, also known as asynchronous code, allows multiple operations to be executed concurrently without blocking the execution of the entire program. Instead of waiting for an operation to complete, non-blocking code delegates the task to another component (e.g., the operating system or a callback function) and continues executing other tasks.
 
 **fs.writeFile vs fs.writeFileSync:** 
 
@@ -169,3 +173,6 @@ try {
 ```
 
 The choice between `fs.writeFile` and `fs.writeFileSync` depends on the requirements of your application. If you need to perform other tasks or handle other events while the file is being written, then `fs.writeFile` is recommended because it is non-blocking and allows your code to continue executing. On the other hand, if writing the file is a critical operation and you want to ensure it completes before moving on, `fs.writeFileSync` can be used, but be aware that it will block the execution of further code until the file write is finished.
+
+
+
