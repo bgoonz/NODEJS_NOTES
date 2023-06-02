@@ -71,11 +71,17 @@ server.listen(3000);
 
 [Available Headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
 **GET Requests** - GET requests are the most common type of request, and they are used to fetch data from a server.
+
 **POST Requests** - POST requests are used to send data to a server.
+
 **PUT Requests** - PUT requests are used to send data to a server to create or update a resource.
+
 **DELETE Requests** - DELETE requests are used to delete a resource from a server.
+
 **PATCH Requests** - PATCH requests are used to update a resource.
+
 **OPTIONS Requests** - OPTIONS requests are used to fetch information about a server.
+
 
 > In the example below:
 
