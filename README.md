@@ -27,13 +27,24 @@ server.listen(3000);
 ```
 
 - the server.listen() method takes a port number as an argument and will keep the server running while it listens for requests on that port number.
+
+
   **Node.js Program Lifecycle**
+  
 - Node.js is a single-threaded application, but it can support concurrency via the concept of event and callbacks.
+  
 - the **Event Loop** is a single thread that performs all I/O operations asynchronously.
+
+
 - The function we pass to createServer is an event listener, and the server object will emit events when a request is made, but it will not execute the event listener function right away. Instead, it will wait for the event loop to be free, and then it will execute the event listener function.
+
+
   `process.exit();` - exit the event loop... this is not recommended, but it is possible, and will terminate the program.
+  
   `response.setHeader( "Content-Type", "text/html" );` - set the header of the response, this represents the type of data that is being sent back to the client.
+  
   `response.write( "<h2> Hello </h2>" );` - write data to the response, this is the data that will be sent back to the client.
+  
   `response.end();` - end the response, this will send the response back to the client.
   **Complete Code To Send Basic HTML to Client**
 
@@ -56,6 +67,8 @@ server.listen(3000);
 > ![developer tools network tab](./0-images/2023-06-01-12-24-14.png)
 
 - as you can see there are some default headers set by the browser in addition to the headers we set in our code.
+
+
 - If we view the response we see the response body is
 
 ```html
@@ -100,3 +113,13 @@ response.write(
 - Buffers are a way to temporarily store data in a stream.
 - Streams are used to read or write data in chunks, and they are used to handle large amounts of data in a memory-efficient way.
 - A buffer is a data structure that allows you to hold multiple chuncks of a stream in memory and operate on them.
+
+**In the following code**
+    
+```js
+     const parsedBody = Buffer.concat( body ).toString();
+```
+
+- the `Buffer` object is available globally in Node.js, and it is used to construct a buffer from an array of chuncks.
+
+
