@@ -143,8 +143,7 @@ req.on("end", () => {
 
 **fs.writeFile vs fs.writeFileSync:** 
 
--
-`fs.writeFile` is an asynchronous function that allows you to write data to a file. It takes the file path, data to be written, an optional encoding (default is UTF-8), and a callback function that will be invoked once the operation is completed. Here's an example:
+- `fs.writeFile` is an asynchronous function that allows you to write data to a file. It takes the file path, data to be written, an optional encoding (default is UTF-8), and a callback function that will be invoked once the operation is completed. Here's an example:
 
 ```js
 const fs = require('fs');
