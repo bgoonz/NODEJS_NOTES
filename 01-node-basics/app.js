@@ -25,10 +25,10 @@ const server = http.createServer((req, res) => {
       //parsedBody: message=Hello+all
       const message = parsedBody.split("=")[1].replace(/\+/g, " ");
       //here the write file sync exicutes after the code that comes after it.
-        fs.writeFileSync( "message.txt", message );
-        res.statusCode = 302;
-        res.setHeader( "Location", "/" );
-        return res.end();
+      fs.writeFileSync("message.txt", message);
+      res.statusCode = 302;
+      res.setHeader("Location", "/");
+      return res.end();
     });
   }
   res.setHeader("Content-Type", "text/html");

@@ -133,39 +133,36 @@ req.on("end", () => {
 
 - When the code reaches req.on it registers the event listeners but doesn't exicute the code in them until the event is emitted.
 
-
 **Blocking & Non-Blocking Code**
 
 - **Blocking code**, also known as synchronous code, executes one operation at a time and blocks further execution until the current operation is completed. When a blocking operation is encountered, the code pauses until the operation finishes, and during this time, the entire program is essentially "blocked" from executing other tasks.
 
-
 - **Non-blocking code**, also known as asynchronous code, allows multiple operations to be executed concurrently without blocking the execution of the entire program. Instead of waiting for an operation to complete, non-blocking code delegates the task to another component (e.g., the operating system or a callback function) and continues executing other tasks.
 
-**fs.writeFile vs fs.writeFileSync:** 
+**fs.writeFile vs fs.writeFileSync:**
 
 - `fs.writeFile` is an asynchronous function that allows you to write data to a file. It takes the file path, data to be written, an optional encoding (default is UTF-8), and a callback function that will be invoked once the operation is completed. Here's an example:
 
 ```js
-const fs = require('fs');
+const fs = require("fs");
 
-fs.writeFile('file.txt', 'Hello, world!', 'utf8', (err) => {
+fs.writeFile("file.txt", "Hello, world!", "utf8", (err) => {
   if (err) {
     console.error(err);
     return;
   }
-  console.log('Data written to file.txt');
+  console.log("Data written to file.txt");
 });
 ```
-
 
 `fs.writeFileSync`, on the other hand, is a synchronous function that writes data to a file. It takes the file path, data to be written, and an optional encoding. Unlike fs.writeFile, it doesn't require a callback function and returns undefined. Here's an example:
 
 ```js
-const fs = require('fs');
+const fs = require("fs");
 
 try {
-  fs.writeFileSync('file.txt', 'Hello, world!', 'utf8');
-  console.log('Data written to file.txt');
+  fs.writeFileSync("file.txt", "Hello, world!", "utf8");
+  console.log("Data written to file.txt");
 } catch (err) {
   console.error(err);
 }
@@ -173,5 +170,12 @@ try {
 
 The choice between `fs.writeFile` and `fs.writeFileSync` depends on the requirements of your application. If you need to perform other tasks or handle other events while the file is being written, then `fs.writeFile` is recommended because it is non-blocking and allows your code to continue executing. On the other hand, if writing the file is a critical operation and you want to ensure it completes before moving on, `fs.writeFileSync` can be used, but be aware that it will block the execution of further code until the file write is finished.
 
+---
 
+### Single Thread, Event Loop & Blocking Code
 
+- nodeJs uses only one thread to exicute all the code.
+- The event loop automatically starts up when a Node.js process is launched, and it is responsible for executing the code, collecting and processing event call-backs, and executing queued sub-tasks.
+- Operations that take a long time like file system operations are sent to a worker pool, which runs on different threads than your code.
+
+- The event loop keeps the nodeJs process running and handles all the callbacks and has a certain order (pending callbacks, pending timers, pending I/O, idle, prepare, poll, check, close callbacks) and it keeps looping through this order.
