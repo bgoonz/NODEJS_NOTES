@@ -179,3 +179,70 @@ The choice between `fs.writeFile` and `fs.writeFileSync` depends on the requirem
 - Operations that take a long time like file system operations are sent to a worker pool, which runs on different threads than your code.
 
 - The event loop keeps the nodeJs process running and handles all the callbacks and has a certain order (pending callbacks, pending timers, pending I/O, idle, prepare, poll, check, close callbacks) and it keeps looping through this order.
+
+
+##### Final Code for the server
+> routes.js
+```js
+const fs = require("fs");
+function requestHandler(req, res) {
+  const url = req.url;
+  const method = req.method;
+  if (url === "/") {
+    res.write("<html>");
+    res.write("<head><title>Enter Message</title><head>");
+    res.write(
+      '<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>'
+    );
+    res.write("</html>");
+    return res.end();
+  }
+  if (url === "/message" && method === "POST") {
+    const body = [];
+    req.on("data", (chunk) => {
+      console.log(chunk);
+      body.push(chunk);
+    });
+    return req.on("end", () => {
+      const parsedBody = Buffer.concat(body).toString();
+      console.log(parsedBody);
+      //parsedBody: message=Hello+all
+      const message = parsedBody.split("=")[1].replace(/\+/g, " ");
+      //here the write file sync exicutes after the code that comes after it.
+      fs.writeFileSync("message.txt", message);
+      res.statusCode = 302;
+      res.setHeader("Location", "/");
+      return res.end();
+    });
+  }
+  res.setHeader("Content-Type", "text/html");
+  res.write("<html>");
+  res.write("<head><title>My First Page</title><head>");
+  res.write("<body><h1>Hello from my Node.js Server!</h1></body>");
+  res.write("</html>");
+  res.end();
+}
+module.exports = { handler: requestHandler };
+//Or alternatively:
+// module.exports.handler = requestHandler;
+```
+
+> app.js
+```js
+const http = require("http");
+const routes = require("./routes");
+
+const server = http.createServer(routes.handler);
+
+server.listen(3000);
+```
+
+
+###### Closing Notes
+- Node.js runs non-blocking code and uses the event loop for running your logic.
+- A node program exits as soon as there is no more work to do.
+- The `createServer()` event never finishes by default.
+- 
+
+
+---
