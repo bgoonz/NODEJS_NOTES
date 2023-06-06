@@ -180,9 +180,10 @@ The choice between `fs.writeFile` and `fs.writeFileSync` depends on the requirem
 
 - The event loop keeps the nodeJs process running and handles all the callbacks and has a certain order (pending callbacks, pending timers, pending I/O, idle, prepare, poll, check, close callbacks) and it keeps looping through this order.
 
-
 ##### Final Code for the server
+
 > routes.js
+
 ```js
 const fs = require("fs");
 function requestHandler(req, res) {
@@ -228,6 +229,7 @@ module.exports = { handler: requestHandler };
 ```
 
 > app.js
+
 ```js
 const http = require("http");
 const routes = require("./routes");
@@ -237,12 +239,20 @@ const server = http.createServer(routes.handler);
 server.listen(3000);
 ```
 
-
 ###### Closing Notes
+
 - Node.js runs non-blocking code and uses the event loop for running your logic.
 - A node program exits as soon as there is no more work to do.
 - The `createServer()` event never finishes by default.
-- 
 
+### Useful resources:
+
+- Official Node.js Docs: <https://nodejs.org/en/docs/guides/>
+
+- Full Node.js Reference (for all core modules): <https://nodejs.org/dist/latest/docs/api/>
+
+- More about the Node.js Event Loop: <https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/>
+
+- Blocking and Non-Blocking Code: <https://nodejs.org/en/docs/guides/dont-block-the-event-loop/>
 
 ---
