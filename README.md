@@ -93,7 +93,9 @@ server.listen(3000);
 > In the example below:
 
 ```js
-response.write("<body><form action='/message' method='POST'><input type='text' name='message'></input><button type='submit></button></form></body>");
+response.write(
+  "<body><form action='/message' method='POST'><input type='text' name='message'></input><button type='submit></button></form></body>"
+);
 ```
 
 - The `name` set on the input does not have to be `message` , it will add any input data to the request and make it accessible via the assigned name.
@@ -190,7 +192,9 @@ function requestHandler(req, res) {
   if (url === "/") {
     res.write("<html>");
     res.write("<head><title>Enter Message</title><head>");
-    res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>');
+    res.write(
+      '<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>'
+    );
     res.write("</html>");
     return res.end();
   }
@@ -252,11 +256,13 @@ server.listen(3000);
 - Blocking and Non-Blocking Code: <https://nodejs.org/en/docs/guides/dont-block-the-event-loop/>
 
 ---
+
 ---
 
 ## Express.js
 
 [Express.js Docs](https://expressjs.com/en/4x/api.html)
+[Express API Notes](./02-express/express.md)
 
 - Express.js is useful for middleware, routing, and templating.
 - in each middleware you can either send a response `res.send()` or call the next middleware `next()`.
@@ -275,7 +281,6 @@ app.use((req, res, next) => {});
 - `res.send()` is often used with frameworks like Express.js and provides a higher-level abstraction for sending responses. It simplifies the process of setting headers and handling different response types.
 - `res.write()` is a lower-level method and is typically used in raw Node.js HTTP server implementations. It requires more manual work to set headers and handle various response aspects.
 
-
 ```js
 app.listen(3000);
 ```
@@ -283,7 +288,6 @@ app.listen(3000);
 > is the same as:
 
 ```js
-
 const server = http.createServer(app);
 
 server.listen(3000);
