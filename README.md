@@ -292,3 +292,5 @@ const server = http.createServer(app);
 
 server.listen(3000);
 ```
+
+> If you call `res.send` ... that is a pretty good indication that you do not want to call the `next()` function. Because if you call `res.send` that will send a response to the client and the client will not wait for the next middleware to be executed.
