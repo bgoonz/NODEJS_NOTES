@@ -258,3 +258,15 @@ server.listen(3000);
 ---
 
 ## Express.js
+
+- Express.js is useful for middleware, routing, and templating.
+- in each middleware you can either send a response `res.send()` or call the next middleware `next()`.
+
+**To use a middleware:**
+
+```js
+app.use((req, res, next) => {});
+```
+
+- the function you pass to app.use will be exicuted for every incoming request.
+- the next function which gets passed as the third argument to the function you pass to app.use has to be called to allow the request to move on to the next middleware.
