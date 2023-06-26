@@ -1,5 +1,4 @@
-//core modules
-// const http = require( "http" );
+// core modules
 const path = require("path");
 
 //third party modules
