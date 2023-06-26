@@ -310,3 +310,14 @@ router.get("/", (req, res, next) => {
 
 module.exports = router;
 ```
+
+
+
+##### How to serve static files
+
+```js
+app.use(express.static(path.join(__dirname, "public")));
+```
+
+
+
