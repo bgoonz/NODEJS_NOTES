@@ -262,7 +262,7 @@ server.listen(3000);
 ## Express.js
 
 [Express.js Docs](https://expressjs.com/en/4x/api.html)
-[Express API Notes](./02-express/express.md)
+[Express API Notes](./00-notes/express.md)
 
 - Express.js is useful for middleware, routing, and templating.
 - in each middleware you can either send a response `res.send()` or call the next middleware `next()`.
