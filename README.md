@@ -311,13 +311,16 @@ router.get("/", (req, res, next) => {
 module.exports = router;
 ```
 
-
-
 ##### How to serve static files
 
 ```js
 app.use(express.static(path.join(__dirname, "public")));
 ```
 
+---
 
+## Templating Engines
 
+`app.set()` is used to set a global configuration value, which is then stored in Express and can be retrieved using `app.get()`.
+
+### Pug
