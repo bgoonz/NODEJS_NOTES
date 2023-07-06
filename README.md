@@ -324,3 +324,35 @@ app.use(express.static(path.join(__dirname, "public")));
 `app.set()` is used to set a global configuration value, which is then stored in Express and can be retrieved using `app.get()`.
 
 ### Pug
+- Indentation matters in pug.
+
+> How to render pug (in shop.js)
+
+```js
+const path = require("path");
+
+const express = require("express");
+
+const rootDir = require("../util/path");
+const adminData = require("./admin");
+
+const router = express.Router();
+
+router.get("/", (req, res, next) => {
+  console.log("shop.js", adminData.products);
+    res.render( "shop", {
+        prods: adminData.products,
+        pageTitle: "Shop",
+        path: "/",
+        hasProducts: adminData.products.length > 0,
+        activeShop: true,
+        productCSS: true
+        })
+});
+
+module.exports = router;
+```
+
+##### We don't need to specify the extension of the file in the render method because we already set the view engine to pug in app.js
+
+
