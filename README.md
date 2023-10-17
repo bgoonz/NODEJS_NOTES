@@ -423,3 +423,22 @@ block content
                 input (type="text", name="title")#title
             button.btn (type="submit") Add Product
 ```
+
+---
+
+### Setting Up Express Handlebars
+
+**Installing Express Handlebars**
+
+```bash
+npm install --save express-handlebars@3.0 
+```
+
+> In app.js
+
+```js
+const expressHbs = require("express-handlebars");
+app.engine("handlebars", expressHbs());
+
+app.set("view engine", "handlebars");
+```
