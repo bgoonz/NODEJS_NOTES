@@ -369,3 +369,66 @@ head
 ```
 
 ### [Converting HTML to PUG](./03-templating-engines/NOTES.md)
+
+
+**Using Layouts in Pug**
+
+- Layouts are used to avoid repeating code in pug files.
+- We start by creating a generalized html page in out `views/layouts/main-layout.pug` file.
+
+```pug
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Page Not Found
+        link(rel="stylesheet", href="/css/main.css")
+        block styles
+    body
+        header.main-header
+            nav.main-header__nav
+                ul.main-header__item-list
+                    li.main-header__item
+                        a(href="/") Shop
+                    li.main-header__item
+                        a(href="/admin/add-product") Add Product
+
+        block content    
+```
+
+- And then we can use the layout to (for example) create our 404.pug file.
+
+```pug
+extends layouts/main-layout.pug
+
+block content
+    h1 Page Not Found!
+```
+    
+- We can also use it like so to create our add-product.pug file.
+
+```pug
+extends layouts/main-layout.pug
+
+
+block styles
+    link(rel="stylesheet", href="/css/main.css")
+    link(rel="stylesheet", href="/css/product.css")
+
+block content
+    main
+        form.product-form (action="/admin/add-product", method="POST")
+            div.form-control
+                label (for="title") Title
+                input (type="text", name="title")#title 
+            button.btn (type="submit") Add Product
+```
+
+
+
+
+
+
+
+
