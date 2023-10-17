@@ -459,3 +459,11 @@ res.render("add-product", {
 ```html
 <title>{{pageTitle}}</title>
 ```
+
+
+---
+
+### EJS
+- Ejs is a templating engine... that (like pug) works out of the box.
+- 
+
