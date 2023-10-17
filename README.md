@@ -370,7 +370,6 @@ head
 
 ### [Converting HTML to PUG](./03-templating-engines/NOTES.md)
 
-
 **Using Layouts in Pug**
 
 - Layouts are used to avoid repeating code in pug files.
@@ -394,7 +393,7 @@ html(lang="en")
                     li.main-header__item
                         a(href="/admin/add-product") Add Product
 
-        block content    
+        block content
 ```
 
 - And then we can use the layout to (for example) create our 404.pug file.
@@ -405,7 +404,7 @@ extends layouts/main-layout.pug
 block content
     h1 Page Not Found!
 ```
-    
+
 - We can also use it like so to create our add-product.pug file.
 
 ```pug
@@ -421,14 +420,6 @@ block content
         form.product-form (action="/admin/add-product", method="POST")
             div.form-control
                 label (for="title") Title
-                input (type="text", name="title")#title 
+                input (type="text", name="title")#title
             button.btn (type="submit") Add Product
 ```
-
-
-
-
-
-
-
-
