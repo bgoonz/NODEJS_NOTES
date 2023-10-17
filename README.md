@@ -367,3 +367,5 @@ head
         link(rel="stylesheet", href="/css/product.css")
     body
 ```
+
+### [Converting HTML to PUG](./03-templating-engines/NOTES.md)
