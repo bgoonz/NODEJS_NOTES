@@ -431,7 +431,7 @@ block content
 **Installing Express Handlebars**
 
 ```bash
-npm install --save express-handlebars@3.0 
+npm install --save express-handlebars@3.0
 ```
 
 > In app.js
@@ -441,4 +441,21 @@ const expressHbs = require("express-handlebars");
 app.engine("handlebars", expressHbs());
 
 app.set("view engine", "handlebars");
+```
+
+**The way you pass data into templates does not change with respect to the template engine you are using**
+
+> So the following works for any template engine:
+
+```js
+res.render("add-product", {
+  pageTitle: "Add Product",
+  path: "/admin/add-product",
+});
+```
+
+- Handle bars works with normal html and the way we pass values from the route into the template is as follows.
+
+```html
+<title>{{pageTitle}}</title>
 ```
