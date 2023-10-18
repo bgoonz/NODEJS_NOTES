@@ -460,10 +460,10 @@ res.render("add-product", {
 <title>{{pageTitle}}</title>
 ```
 
-
 ---
 
 ### EJS
+
 - Ejs is a templating engine... that (like pug) works out of the box.
 
 **How we get dynamic route parameters in EJS**
@@ -471,7 +471,6 @@ res.render("add-product", {
 ```ejs
 <title><%=pageTitle %></title>
 ```
-
 
 - You can write regular javascript in ejs like so:
 
@@ -501,3 +500,29 @@ res.render("add-product", {
     <% } %>
   </main>
 ```
+
+**How to include partials using EJS**
+
+```html
+<%- include('includes/head.ejs') %>
+
+  </head>
+
+  <body>
+    <header class="main-header">
+      <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+          <li class="main-header__item"><a  href="/">Shop</a></li>
+          <li class="main-header__item">
+            <a href="/admin/add-product">Add Product</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <h1>Page Not Found!</h1>
+  </body>
+</html>
+
+```
+
+- The code will render the html from head.ejs into the html file.
