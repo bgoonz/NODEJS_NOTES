@@ -527,11 +527,33 @@ res.render("add-product", {
 
 - The code will render the html from head.ejs into the html file.
 
-#### Challenge:
-
-**Basic setup**
 
 
 ---
 ---
+
+## Model View Controller (MVC)
+
+- The view is the UI that your user interacts with.
+- The model is a representation of the data in your code (allows you to work with your data... i.e. fetch & save)
+- The controllers connect models and views... they contain the in between logic.
+  - controllers are often split across middleware functions.
+
+The following is an example of controller logic:
+
+```js
+router.get('/', (req, res, next) => {
+  const products = adminData.products;
+  res.render('shop', {
+    prods: products,
+    pageTitle: 'Shop',
+    path: '/',
+    hasProducts: products.length > 0,
+    activeShop: true,
+    productCSS: true
+  });
+});
+```
+
+
 
