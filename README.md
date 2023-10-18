@@ -526,3 +526,12 @@ res.render("add-product", {
 ```
 
 - The code will render the html from head.ejs into the html file.
+
+#### Challenge:
+
+**Basic setup**
+
+
+---
+---
+
