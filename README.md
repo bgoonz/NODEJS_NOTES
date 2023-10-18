@@ -465,5 +465,39 @@ res.render("add-product", {
 
 ### EJS
 - Ejs is a templating engine... that (like pug) works out of the box.
-- 
 
+**How we get dynamic route parameters in EJS**
+
+```ejs
+<title><%=pageTitle %></title>
+```
+
+
+- You can write regular javascript in ejs like so:
+
+```ejs
+<main>
+    <% if(prods.length > 0) { %>
+    <div class="grid">
+      <article class="card product-item">
+        <header class="card__header">
+          <h1 class="product__title">Great Book</h1>
+        </header>
+        <div class="card__image">
+          <img src='...'/>
+        </div>
+        <div class="card__content">
+          <h2 class="product__price">$19.99</h2>
+          <p class="product__description">A very interesting book about so many even more interesting things!</p>
+        </div>
+        <div class="card__actions">
+          <button class="btn">Add to Cart</button>
+        </div>
+      </article>
+    </div>
+    <% }else{ %>
+
+    <h1>No products found</h1>
+    <% } %>
+  </main>
+```
