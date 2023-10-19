@@ -39,20 +39,20 @@ Consider the following class definition:
 
 ```javascript
 class MyClass {
-    constructor() {
-        this.myValue = 42;
-    }
+  constructor() {
+    this.myValue = 42;
+  }
 
-    arrowFunction = () => {
-        console.log(this.myValue);  // Refers to the MyClass instance due to arrow function capturing the outer `this` value.
-    }
+  arrowFunction = () => {
+    console.log(this.myValue); // Refers to the MyClass instance due to arrow function capturing the outer `this` value.
+  };
 
-    traditionalFunction() {
-        console.log(this.myValue);  // Refers to the MyClass instance as it's a traditional method on the class.
-    }
+  traditionalFunction() {
+    console.log(this.myValue); // Refers to the MyClass instance as it's a traditional method on the class.
+  }
 }
 
 const instance = new MyClass();
-instance.arrowFunction();         // Outputs: 42
-instance.traditionalFunction();   // Outputs: 42
+instance.arrowFunction(); // Outputs: 42
+instance.traditionalFunction(); // Outputs: 42
 ```

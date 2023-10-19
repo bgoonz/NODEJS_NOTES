@@ -554,9 +554,9 @@ router.get("/", (req, res, next) => {
 });
 ```
 
-
 #### Models:
-- A model is a representation of a data structure. A model contains the data, logic, and rules of the application. Unlike the view, it also knows about the database. 
+
+- A model is a representation of a data structure. A model contains the data, logic, and rules of the application. Unlike the view, it also knows about the database.
 
 > The product model:
 
@@ -564,18 +564,17 @@ router.get("/", (req, res, next) => {
 const products = [];
 
 module.exports = class Product {
-    constructor(title){
-        this.title=title;
-    }
-    save(){
-        products.push(this);
-    }
-    
-   static fetchAll(){
-        return products;
-    }
-}
+  constructor(title) {
+    this.title = title;
+  }
+  save() {
+    products.push(this);
+  }
 
+  static fetchAll() {
+    return products;
+  }
+};
 ```
 
 - In the save method, `this` refers to the object that is created from the class.
@@ -592,7 +591,7 @@ exports.getAddProduct = (req, res, next) => {
     path: "/admin/add-product",
     formsCSS: true,
     productCSS: true,
-    activeAddProduct: true
+    activeAddProduct: true,
   });
 };
 
@@ -603,24 +602,23 @@ exports.postAddProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-    const products = new Product.fetchAll();
+  const products = new Product.fetchAll();
   res.render("shop", {
     prods: products,
     pageTitle: "Shop",
     path: "/",
     hasProducts: products.length > 0,
     activeShop: true,
-    productCSS: true
+    productCSS: true,
   });
 };
 ```
-
 
 **Refactoring Save method to use file storage**
 
 ```js
 save(){
-        const filePath = path.join(rootDir, 'data', 'products.json'); 
+        const filePath = path.join(rootDir, 'data', 'products.json');
         fs.readFile(filePath, (error, fileContent)=>{
             let products = [];
             if(!error){
@@ -634,6 +632,5 @@ save(){
         })
     }
 ```
+
 - In order for products.push(this) to refer to the correct object we need to use an arrow function.
-
-
