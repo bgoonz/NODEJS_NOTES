@@ -527,9 +527,8 @@ res.render("add-product", {
 
 - The code will render the html from head.ejs into the html file.
 
-
-
 ---
+
 ---
 
 ## Model View Controller (MVC)
@@ -542,18 +541,15 @@ res.render("add-product", {
 The following is an example of controller logic:
 
 ```js
-router.get('/', (req, res, next) => {
+router.get("/", (req, res, next) => {
   const products = adminData.products;
-  res.render('shop', {
+  res.render("shop", {
     prods: products,
-    pageTitle: 'Shop',
-    path: '/',
+    pageTitle: "Shop",
+    path: "/",
     hasProducts: products.length > 0,
     activeShop: true,
-    productCSS: true
+    productCSS: true,
   });
 });
 ```
-
-
-
