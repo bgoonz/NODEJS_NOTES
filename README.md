@@ -614,3 +614,22 @@ exports.getProducts = (req, res, next) => {
   });
 };
 ```
+
+
+**Refactoring Save method to use file storage**
+
+```js
+save(){
+        const filePath = path.join(pathUtil, 'data', 'products.json'); 
+        fs.readFile(filePath, (error, fileContent)=>{
+            let products = [];
+            if(!error){
+                products = JSON.parse(fileContent);
+            }
+            products.push(this);
+        })
+    }
+```
+- In order for products.push(this) to refer to the correct object we need to use an arrow function.
+
+
