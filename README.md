@@ -553,3 +553,64 @@ router.get("/", (req, res, next) => {
   });
 });
 ```
+
+
+#### Models:
+- A model is a representation of a data structure. A model contains the data, logic, and rules of the application. Unlike the view, it also knows about the database. 
+
+> The product model:
+
+```js
+const products = [];
+
+module.exports = class Product {
+    constructor(title){
+        this.title=title;
+    }
+    save(){
+        products.push(this);
+    }
+    
+   static fetchAll(){
+        return products;
+    }
+}
+
+```
+
+- In the save method, `this` refers to the object that is created from the class.
+- The static keyword defines a static method for a class. Static methods are called without instantiating their class and cannot be called through a class instance. Static methods are often used to create utility functions for an application.
+
+> products.js controller refactored to use product model:
+
+```js
+const Product = require("../models/product");
+
+exports.getAddProduct = (req, res, next) => {
+  res.render("add-product", {
+    pageTitle: "Add Product",
+    path: "/admin/add-product",
+    formsCSS: true,
+    productCSS: true,
+    activeAddProduct: true
+  });
+};
+
+exports.postAddProduct = (req, res, next) => {
+  const product = new Product(req.body.title);
+  product.save();
+  res.redirect("/");
+};
+
+exports.getProducts = (req, res, next) => {
+    const products = new Product.fetchAll();
+  res.render("shop", {
+    prods: products,
+    pageTitle: "Shop",
+    path: "/",
+    hasProducts: products.length > 0,
+    activeShop: true,
+    productCSS: true
+  });
+};
+```
