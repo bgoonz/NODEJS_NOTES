@@ -650,3 +650,29 @@ save(){
         <input type="number" step="0.01" name="price" id="price">
       </div>
 ```      
+
+
+---
+---
+
+## Dynamic Routes & Advanced Models
+
+**How to add a unique id to our products when the Model class is instantiated**
+
+```js
+  save() {
+    //this way is not gaurenteed to be unique but it will work for now.
+    this.id = Math.random().toString()
+    getProductsFromFile(products => {
+      products.push(this);
+      fs.writeFile(p, JSON.stringify(products), err => {
+        console.log(err);
+      });
+    });
+  }
+```
+
+
+```html
+   <a href='/products/<%=product.id%>' class="btn">Details</a>
+```
