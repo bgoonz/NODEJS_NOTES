@@ -1,5 +1,11 @@
 # NodeJS
 
+> Remove node modules:
+
+```bash
+find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
+```
+
 **Main Core Modules**
 
 - http - create a web server, send requests, etc.
