@@ -634,3 +634,13 @@ save(){
 ```
 
 - In order for products.push(this) to refer to the correct object we need to use an arrow function.
+
+
+**How to support decimal numbers in the price input (using step)**
+
+```html
+ <div class="form-control">
+        <label for="price">Price</label>
+        <input type="number" step="0.01" name="price" id="price">
+      </div>
+```      
