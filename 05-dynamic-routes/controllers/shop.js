@@ -14,7 +14,7 @@ exports.getProduct = (req, res, next) => {
   //productId is supplied by the dynamic segment of the route
   const prodId = req.params.productId;
   Product.findById(prodId, (product) => {
-    console.log(product);
+    res.render('shop/product-detail',{product:product, pageTitle:product.title, path: "/products"})
   });
 };
 
