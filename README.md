@@ -676,3 +676,34 @@ save(){
 ```html
    <a href='/products/<%=product.id%>' class="btn">Details</a>
 ```
+
+---
+
+
+#### Dynamic Route Parameters:
+- When defining routes in your application, you can specify dynamic parameters in the path. These parameters are prefixed with a colon (:) and can match any value in their position within the URL. Here's an example using Express.js:
+
+```js
+router.get('/products/:productId', (req, res) => {
+  // You can access :productId via req.params.productId
+  // This route will match any path like /products/1, /products/abc, etc.
+});
+```
+
+###### Order of Route Definitions Matters
+- When you have both dynamic routes and static routes that could potentially match the same URL pattern, the order in which you define your routes is crucial. Routes are evaluated in the order they are defined, and the first match will handle the request.
+
+```js
+// Dynamic route
+router.get('/products/:productId', (req, res) => {
+  // Handles any /products/{anything} pattern
+});
+
+// Static route
+router.get('/products/delete', (req, res) => {
+  // Intended to handle a specific case: /products/delete
+});
+```
+
+- In this setup, the route `router.get('/products/delete')` will never be reached if it's defined after the dynamic route router.get('/products/:productId'). This is because the dynamic route will match any /products/{anything} pattern, including /products/delete, and it is evaluated first.
+    - To ensure that the static route gets the chance to handle its specific case, you should define it before the dynamic route:
