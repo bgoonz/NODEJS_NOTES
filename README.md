@@ -707,10 +707,9 @@ router.get("/products/delete", (req, res) => {
 - In this setup, the route `router.get('/products/delete')` will never be reached if it's defined after the dynamic route router.get('/products/:productId'). This is because the dynamic route will match any /products/{anything} pattern, including /products/delete, and it is evaluated first.
   - To ensure that the static route gets the chance to handle its specific case, you should define it before the dynamic route:
 
-
 ---
 
-
 #### Query Parameters:
+
 - created in a url using a `?` and a key value pair seperated by an `=` sign...
 - Query parameters are components of a URL that are used to sort, filter, or customize the content or results returned by a web server. They follow the question mark (?) in a URL and are separated by ampersands (&) when multiple parameters are used. Each parameter consists of a key-value pair, connected by an equals sign (=). For example, in the URL `http://example.com/posts?sort=asc&category=science`, `sort=asc` and `category=science` are query parameters where `sort` and `category` are keys, and `asc` (ascending order) and `science` are their respective values. These parameters instruct the server to return posts in ascending order from the science category, allowing for a dynamic and customized user experience based on their needs or preferences.
