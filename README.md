@@ -543,6 +543,7 @@ res.render("add-product", {
 - The model is a representation of the data in your code (allows you to work with your data... i.e. fetch & save)
 - The controllers connect models and views... they contain the in between logic.
   - controllers are often split across middleware functions.
+  - Controllers are a type of middleware.
 
 The following is an example of controller logic:
 
