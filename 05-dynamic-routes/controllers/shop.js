@@ -62,6 +62,15 @@ exports.postCart = (req, res, next) => {
   res.redirect("/cart");
 };
 
+exports.postCartDeleteProduct = (req,res,next) =>{
+    //remove product from cart... not deleting the product it's self
+    const prodId = req.body.productId;
+    Product.findById(prodId, product=>{
+        Cart.deleteProduct(prodId, product.price)
+        res.redirect('/cart')
+    })
+}
+
 exports.getOrders = (req, res, next) => {
   res.render("shop/orders", {
     path: "/orders",
