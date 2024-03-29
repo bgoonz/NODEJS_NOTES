@@ -714,3 +714,25 @@ router.get("/products/delete", (req, res) => {
 
 - created in a url using a `?` and a key value pair seperated by an `=` sign...
 - Query parameters are components of a URL that are used to sort, filter, or customize the content or results returned by a web server. They follow the question mark (?) in a URL and are separated by ampersands (&) when multiple parameters are used. Each parameter consists of a key-value pair, connected by an equals sign (=). For example, in the URL `http://example.com/posts?sort=asc&category=science`, `sort=asc` and `category=science` are query parameters where `sort` and `category` are keys, and `asc` (ascending order) and `science` are their respective values. These parameters instruct the server to return posts in ascending order from the science category, allowing for a dynamic and customized user experience based on their needs or preferences.
+
+
+---
+---
+
+## SQL
+
+#### Choosing a Database(SQL vs NoSQL):
+
+- SQL is structured as tables where you have fields (columns) and we have rows or records where our data is stored.
+- SQL has a strong data schema where all data in a table has to conform to the data type of it's field.
+- SQL has relationships between data (one to one, one to many, many to many)
+
+![Tables](./images/2024-03-28-15-45-11.png)
+
+
+- NoSQL has collections with documents
+- Documents are of a similar format to a js object
+- Documents do not has a strictly enforced schema.
+
+
+![NoSQL](./images/2024-03-28-16-01-31.png)
