@@ -731,8 +731,14 @@ router.get("/products/delete", (req, res) => {
 
 
 - NoSQL has collections with documents
-- Documents are of a similar format to a js object
+- Documents are of a similar format to a js object.
+- In NoSQL we don't have relations between collections, instead we duplicate the data.
 - Documents do not has a strictly enforced schema.
 
 
 ![NoSQL](./images/2024-03-28-16-01-31.png)
+ 
+#### Comparing SQL & NoSQL (Horizontal vs Vertical Scaling):
+
+![Horizontal vs Vertical Scaling](./imges/2024-03-29-11-15-42.png)
+![SQL vs NoSQL](./images/2024-03-29-11-20-04.png)
